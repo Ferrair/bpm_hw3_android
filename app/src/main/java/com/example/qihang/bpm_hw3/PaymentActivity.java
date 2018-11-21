@@ -23,7 +23,7 @@ import com.example.qihang.bpm_hw3.utils.PayResult;
 
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class PaymentActivity extends AppCompatActivity {
     /**
      * 支付宝账户：dyyyti6490@sandbox.com
      * 登录密码：111111
@@ -45,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
             // 判断resultStatus 为9000则代表支付成功
             if (TextUtils.equals(resultStatus, "9000")) {
                 // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                Log.i("MainActivity", "支付成功 " + resultInfo);
+                Log.i("PaymentActivity", "支付成功 " + resultInfo);
             } else {
                 // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                Log.i("MainActivity", "支付失败 " + resultInfo);
+                Log.i("PaymentActivity", "支付失败 " + resultInfo);
             }
         }
     };
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_payment);
         requestPermission();
         EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-                        PayTask alipay = new PayTask(MainActivity.this);
+                        PayTask alipay = new PayTask(PaymentActivity.this);
                         Map<String, String> result = alipay.payV2(orderInfo, true);
                         Log.i("msp", result.toString());
 
