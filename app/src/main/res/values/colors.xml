@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimaryWhite">#ffffff</color>
+    <color name="colorPrimaryDarkWhite">#ffffff</color>
+
+    <color name="button_blue">#3ec7f8</color>
+    <color name="status_bar">#34c3ef</color>
+    <color name="lines">#dddddd</color>
+
 </resources>

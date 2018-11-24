@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="#f9f8f8"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:background="@drawable/head_di"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/head_head" />
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="5dp"
+                        android:text="王启航"
+                        android:textColor="#ffffff"
+                        android:textSize="36px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="210dp"
+                    android:background="#ffffff"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/lines" />
+
+
+                    <TextView
+                        android:id="@+id/registration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_jy"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="就诊记录"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+
+                    <TextView
+                        android:id="@+id/prescript"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_jy"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="药方"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+
+                    <TextView
+                        android:id="@+id/examination"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_jy"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="检查单"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+
+                    <TextView
+                        android:id="@+id/payment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_ka"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="缴费记录"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+
+                    <TextView
+                        android:id="@+id/examination_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_ka"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="检查结果"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+
+                    <TextView
+                        android:id="@+id/drug_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#ffffff"
+                        android:drawableLeft="@drawable/icon_ka"
+                        android:drawablePadding="28px"
+                        android:drawableRight="@drawable/icon_arrow"
+                        android:padding="10dp"
+                        android:text="拿药结果"
+                        android:textColor="#666666"
+                        android:textSize="39px" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/lines" />
+                </LinearLayout>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="110dp"
+                    android:background="#ffffff">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="886"
+                                android:textColor="#000000"
+                                android:textSize="60px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:drawableLeft="@drawable/icon_qianbao"
+                                android:drawablePadding="10px"
+                                android:gravity="center"
+                                android:text="我的钱包"
+                                android:textColor="#333333"
+                                android:textSize="33px" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="32"
+                                android:textColor="#000000"
+                                android:textSize="60px" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:drawableLeft="@drawable/icon_jifen"
+                                android:drawablePadding="10px"
+                                android:gravity="center"
+                                android:text="我的积分"
+                                android:textColor="#333333"
+                                android:textSize="33px" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="10"
+                                android:textColor="#000000"
+                                android:textSize="60px"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="10dp"
+                                android:drawableLeft="@drawable/icon_youhuijuan"
+                                android:drawablePadding="10px"
+                                android:gravity="center"
+                                android:text="我的优惠券"
+                                android:textColor="#333333"
+                                android:textSize="33px" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+            </FrameLayout>
+
+            <!--<Button-->
+            <!--android:id="@+id/logout_button"-->
+            <!--android:layout_width="330dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:background="@drawable/shape_button"-->
+            <!--android:text="退出当前登录"-->
+            <!--android:textColor="@android:color/white" />-->
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

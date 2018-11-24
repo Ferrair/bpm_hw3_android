@@ -17,13 +17,24 @@ import com.baidu.ocr.sdk.model.IDCardParams;
 import com.baidu.ocr.sdk.model.IDCardResult;
 import com.baidu.ocr.ui.camera.CameraActivity;
 import com.baidu.ocr.ui.camera.CameraNativeHelper;
+import com.example.qihang.bpm_hw3.network.RemoteManager;
+import com.example.qihang.bpm_hw3.network.model.Patient;
+import com.example.qihang.bpm_hw3.network.services.HospitalInterface;
 import com.example.qihang.bpm_hw3.utils.FileUtil;
+import com.example.qihang.bpm_hw3.utils.JsonUtil;
 
 import java.io.File;
+import java.io.IOException;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+@SuppressLint("LongLogTag")
 public class ScanCardActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_CAMERA = 102;
-    public String name;
+    private HospitalInterface mHospitalInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,8 @@ public class ScanCardActivity extends AppCompatActivity {
             }
         }, getApplicationContext(), "mrInNmdlyqgYHy6Xq7SjaWHd", "DumM9Z5H0dkqURk7M0jpFxibGZHpa6uI");
 
+        // Retrofit
+        mHospitalInterface = RemoteManager.create(HospitalInterface.class);
 
         // 身份证反面拍照
         findViewById(R.id.id_card_back_button).setOnClickListener(new View.OnClickListener() {
@@ -58,12 +71,67 @@ public class ScanCardActivity extends AppCompatActivity {
 
             }
         });
+
+//        findViewById(R.id.id_test).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Call<ResponseBody> call = mHospitalInterface.examinationItem("1542702390155");
+//                call.enqueue(new Callback<ResponseBody>() {
+//                    @Override
+//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+//                        if (response.isSuccessful()) {
+//                            try {
+//                                String json = response.body().string();
+//                                Examination examination = JsonUtil.fromJson(json, Examination.class);
+//                                Log.i("ScanCardActivity", examination.id);
+//
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+//                        Log.i("ScanCardActivity onFailure", t.toString());
+//                    }
+//                });
+//            }
+//        });
+    }
+
+    /**
+     * Register a Patient on Server
+     *
+     * @param name patient' name
+     */
+    private void registerPatient(String name) {
+        Patient patient = new Patient(name);
+        Call<ResponseBody> call = mHospitalInterface.register(patient.build());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        String json = response.body().string();
+                        Patient patient = JsonUtil.fromJson(json, Patient.class);
+                        // TODO with patient
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("ScanCardActivity onFailure", t.toString());
+            }
+        });
     }
 
     private void initCamera() {
         CameraNativeHelper.init(this, OCR.getInstance(this).getLicense(),
                 new CameraNativeHelper.CameraNativeInitCallback() {
-                    @SuppressLint("LongLogTag")
                     @Override
                     public void onError(int errorCode, Throwable e) {
                         Log.e("ScanCardActivity initCamera", e.getMessage());
@@ -79,16 +147,14 @@ public class ScanCardActivity extends AppCompatActivity {
         param.setImageQuality(20);
 
         OCR.getInstance(this).recognizeIDCard(param, new OnResultListener<IDCardResult>() {
-            @SuppressLint("LongLogTag")
             @Override
             public void onResult(IDCardResult result) {
                 if (result != null) {
                     Log.i("ScanCardActivity recIDCard", result.toString());
-                    // TODO with result.getName();
+                    registerPatient(result.getName().toString());
                 }
             }
 
-            @SuppressLint("LongLogTag")
             @Override
             public void onError(OCRError error) {
                 Log.e("ScanCardActivity recIDCard", error.getMessage());
