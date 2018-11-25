@@ -38,4 +38,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'
     implementation files('libs/universal-image-loader-1.9.4.jar')
+
+    compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+    // implementation 'com.afollestad.material-dialogs:core:2.0.0-rc1'
+    implementation 'com.github.razerdp:BasePopup:2.0.9'
 }

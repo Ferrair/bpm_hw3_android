@@ -1,3 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="main_text_size">36px</dimen>
+    <dimen name="main_title_size">48px</dimen>
+    <dimen name="input_text_size">40px</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
 </resources>

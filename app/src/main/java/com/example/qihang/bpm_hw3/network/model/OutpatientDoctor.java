@@ -6,6 +6,7 @@ package com.example.qihang.bpm_hw3.network.model;
 
 public class OutpatientDoctor {
     public String name;
+    public String major;
     public String id;
 
     public String getName() {
@@ -22,5 +23,13 @@ public class OutpatientDoctor {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
     }
 }

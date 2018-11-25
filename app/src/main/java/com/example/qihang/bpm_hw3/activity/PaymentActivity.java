@@ -1,4 +1,4 @@
-package com.example.qihang.bpm_hw3;
+package com.example.qihang.bpm_hw3.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.EnvUtils;
 import com.alipay.sdk.app.PayTask;
+import com.example.qihang.bpm_hw3.R;
 import com.example.qihang.bpm_hw3.utils.OrderInfoUtil2_0;
 import com.example.qihang.bpm_hw3.utils.PayResult;
 

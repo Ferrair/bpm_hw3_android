@@ -11,4 +11,9 @@
     <color name="status_bar">#34c3ef</color>
     <color name="lines">#dddddd</color>
 
+    <color name="main_title_text">#000000</color>
+    <color name="main_normal_text">#666666</color>
+    <color name="main_content_text">#333333</color>
+    <color name="main_hint_text">#999999</color>
+
 </resources>

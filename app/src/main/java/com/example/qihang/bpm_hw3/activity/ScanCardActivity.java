@@ -1,4 +1,4 @@
-package com.example.qihang.bpm_hw3;
+package com.example.qihang.bpm_hw3.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -17,6 +17,7 @@ import com.baidu.ocr.sdk.model.IDCardParams;
 import com.baidu.ocr.sdk.model.IDCardResult;
 import com.baidu.ocr.ui.camera.CameraActivity;
 import com.baidu.ocr.ui.camera.CameraNativeHelper;
+import com.example.qihang.bpm_hw3.R;
 import com.example.qihang.bpm_hw3.network.RemoteManager;
 import com.example.qihang.bpm_hw3.network.model.Patient;
 import com.example.qihang.bpm_hw3.network.services.HospitalInterface;

@@ -1,6 +1,7 @@
-package com.example.qihang.bpm_hw3;
+package com.example.qihang.bpm_hw3.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.qihang.bpm_hw3.R;
 import com.example.qihang.bpm_hw3.adapter.RegistrationAdapter;
 import com.example.qihang.bpm_hw3.network.RemoteManager;
 import com.example.qihang.bpm_hw3.network.model.Registration;
@@ -59,7 +61,7 @@ public class RegistrationListActivity extends AppCompatActivity {
                     try {
                         String json = response.body().string();
                         RegistrationList result = JsonUtil.fromJson(json, RegistrationList.class);
-
+                        // TODO sort by register_time
                         RegistrationAdapter mAdapter = new RegistrationAdapter(getApplicationContext(), result.list);
                         mRecyclerView.setAdapter(mAdapter);
                     } catch (IOException e) {
@@ -78,6 +80,9 @@ public class RegistrationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to register
+                Intent intent = new Intent(RegistrationListActivity.this, RegisterActivity.class);
+                intent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
+                startActivity(intent);
             }
         });
 

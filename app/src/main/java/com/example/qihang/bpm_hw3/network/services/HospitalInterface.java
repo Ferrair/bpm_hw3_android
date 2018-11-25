@@ -19,7 +19,7 @@ public interface HospitalInterface {
     /**
      * 挂号
      */
-    @POST("Patient")
+    @POST("Registration")
     Call<ResponseBody> register(@Body Map<String, Object> params);
 
 
@@ -108,6 +108,12 @@ public interface HospitalInterface {
     /**
      * 得到一个病人所有报告
      */
-    @GET("Report}")
+    @GET("Report")
     Call<ResponseBody> report(@Query("Report.patient_id.id") String patient_id);
+
+    /**
+     * 得到所有的Outpatientdoctor
+     */
+    @GET("Outpatientdoctor")
+    Call<ResponseBody> allDoctor();
 }

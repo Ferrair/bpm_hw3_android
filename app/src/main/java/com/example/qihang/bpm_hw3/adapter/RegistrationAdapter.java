@@ -40,9 +40,11 @@ public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapte
     public void onBindViewHolder(Holder holder, int position) {
         Registration item = data.get(position);
 
-        holder.registration_time.setText(item.getTimeString());
+        holder.registration_time.setText(item.getTiRegistermeString());
         holder.registration_detail.setText(item.getDetail());
-        // ImageLoader.getInstance().displayImage(item.imageUrl, holder.community_image);
+        if (position == 0) {
+            holder.newest.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -51,15 +53,14 @@ public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapte
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        public ImageView registration_image;
-        public TextView registration_time, registration_detail;
+        public TextView registration_time, registration_detail, newest;
 
         //实现的方法
         public Holder(View itemView) {
             super(itemView);
-            registration_image = itemView.findViewById(R.id.registration_image);
             registration_time = itemView.findViewById(R.id.registration_time);
             registration_detail = itemView.findViewById(R.id.registration_detail);
+            newest = itemView.findViewById(R.id.newest);
         }
     }
 }
