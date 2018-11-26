@@ -8,6 +8,8 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.qihang.bpm_hw3.R;
 import com.example.qihang.bpm_hw3.adapter.DoctorAdapter;
@@ -91,10 +93,12 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
             }
         });
 
-        findViewById(R.id.finish).setOnClickListener(new View.OnClickListener() {
+        final TextView mFinish = findViewById(R.id.finish);
+        mFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 register();
+                mFinish.setClickable(false);
             }
         });
     }
@@ -118,6 +122,8 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
                     try {
                         String json = response.body().string();
                         Log.i("RegisterActivity register", json);
+                        Toast.makeText(getApplicationContext(), "挂号成功", Toast.LENGTH_SHORT).show();
+                        finish();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

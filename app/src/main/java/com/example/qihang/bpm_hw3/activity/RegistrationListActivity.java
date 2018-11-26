@@ -45,7 +45,6 @@ public class RegistrationListActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
 
         mRecyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
@@ -53,6 +52,23 @@ public class RegistrationListActivity extends AppCompatActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
 
+        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go to register
+                Intent intent = new Intent(RegistrationListActivity.this, RegisterActivity.class);
+                intent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
         Call<ResponseBody> call = mHospitalInterface.registration(getIntent().getStringExtra("patient_id"));
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -75,20 +91,7 @@ public class RegistrationListActivity extends AppCompatActivity {
                 Log.i("RegistrationListActivity onFailure", t.toString());
             }
         });
-
-        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Go to register
-                Intent intent = new Intent(RegistrationListActivity.this, RegisterActivity.class);
-                intent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
-                startActivity(intent);
-            }
-        });
-
-
     }
-
 
     protected class RegistrationList {
         @SerializedName(value = "Registration")
