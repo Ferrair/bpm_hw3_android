@@ -65,7 +65,7 @@
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
                         android:padding="10dp"
-                        android:text="就诊记录"
+                        android:text="挂号记录"
                         android:textColor="#666666"
                         android:textSize="39px" />
 

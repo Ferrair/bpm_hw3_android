@@ -1,5 +1,7 @@
 package com.example.qihang.bpm_hw3.network.model;
 
+import android.support.annotation.NonNull;
+
 import com.example.qihang.bpm_hw3.utils.TimeUtils;
 
 import java.util.HashMap;
@@ -9,7 +11,7 @@ import java.util.Map;
  * Created by qihang on 2018/11/21.
  */
 
-public class Registration implements MapBuilder {
+public class Registration implements MapBuilder, Comparable<Registration> {
     public String id;
     public String detail;
     public long timestamp;
@@ -82,7 +84,7 @@ public class Registration implements MapBuilder {
         Map<String, Object> map = new HashMap<>();
         map.put("detail", getDetail());
         map.put("timestamp", getTimestamp());
-        map.put("timestamp", getRegister_time());
+        map.put("register_time", getRegister_time());
         map.put("patient_id", getPatient_id_post());
         map.put("outpatient_doctor_id", getOutpatient_doctor_id_post());
         return map;
@@ -102,5 +104,10 @@ public class Registration implements MapBuilder {
 
     public void setOutpatient_doctor_id_post(ForeignModel outpatient_doctor_id_post) {
         this.outpatient_doctor_id_post = outpatient_doctor_id_post;
+    }
+
+    @Override
+    public int compareTo(@NonNull Registration o) {
+        return this.getRegister_time() > o.getRegister_time() ? 1 : -1;
     }
 }

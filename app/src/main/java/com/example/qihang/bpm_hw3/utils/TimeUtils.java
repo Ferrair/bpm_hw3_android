@@ -12,7 +12,7 @@ import java.util.Date;
 public class TimeUtils {
     public static String timestamp2String(long timestamp) {
         DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-        return sdf.format(timestamp);
+        return sdf.format(timestamp * 1000);
     }
 
     public static long string2Timestamp(String time) {
@@ -20,7 +20,7 @@ public class TimeUtils {
         Date d;
         try {
             d = sdf.parse(time);
-            return d.getTime();
+            return d.getTime() / 1000;
         } catch (ParseException e) {
             e.printStackTrace();
         }

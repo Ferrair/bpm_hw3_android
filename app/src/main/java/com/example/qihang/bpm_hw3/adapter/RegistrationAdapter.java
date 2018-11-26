@@ -42,6 +42,7 @@ public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapte
 
         holder.registration_time.setText(item.getTiRegistermeString());
         holder.registration_detail.setText(item.getDetail());
+        holder.registration_id.setText(item.getId());
         if (position == 0) {
             holder.newest.setVisibility(View.VISIBLE);
         }
@@ -53,13 +54,14 @@ public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapte
     }
 
     public class Holder extends RecyclerView.ViewHolder {
-        public TextView registration_time, registration_detail, newest;
+        public TextView registration_time, registration_detail, newest, registration_id;
 
         //实现的方法
         public Holder(View itemView) {
             super(itemView);
             registration_time = itemView.findViewById(R.id.registration_time);
             registration_detail = itemView.findViewById(R.id.registration_detail);
+            registration_id = itemView.findViewById(R.id.registration_id);
             newest = itemView.findViewById(R.id.newest);
         }
     }

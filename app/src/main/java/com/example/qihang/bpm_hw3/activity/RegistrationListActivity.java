@@ -24,6 +24,7 @@ import com.example.qihang.bpm_hw3.utils.JsonUtil;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -77,7 +78,7 @@ public class RegistrationListActivity extends AppCompatActivity {
                     try {
                         String json = response.body().string();
                         RegistrationList result = JsonUtil.fromJson(json, RegistrationList.class);
-                        // TODO sort by register_time
+                        Collections.sort(result.list);
                         RegistrationAdapter mAdapter = new RegistrationAdapter(getApplicationContext(), result.list);
                         mRecyclerView.setAdapter(mAdapter);
                     } catch (IOException e) {

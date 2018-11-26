@@ -139,6 +139,6 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-        mRegister_time.setText(TimeUtils.timestamp2String(millseconds));
+        mRegister_time.setText(TimeUtils.timestamp2String(millseconds / 1000));
     }
 }
