@@ -58,12 +58,12 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
         return data.size();
     }
 
-    public class Holder extends RecyclerView.ViewHolder {
-        public ImageView doctor_image;
-        public TextView doctor_name, doctor_major;
-        public LinearLayout root;
+    class Holder extends RecyclerView.ViewHolder {
+        ImageView doctor_image;
+        TextView doctor_name, doctor_major;
+        LinearLayout root;
 
-        public Holder(View itemView) {
+        Holder(View itemView) {
             super(itemView);
             doctor_name = itemView.findViewById(R.id.doctor_name);
             doctor_major = itemView.findViewById(R.id.doctor_major);

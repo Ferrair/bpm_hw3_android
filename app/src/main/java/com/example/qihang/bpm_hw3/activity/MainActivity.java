@@ -71,7 +71,9 @@ public class MainActivity extends AppCompatActivity {
         mPrescript.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), PrescriptListActivity.class);
+                intent.putExtra("patient_id", patientId);
+                startActivity(intent);
             }
         });
         mExamination.setOnClickListener(new View.OnClickListener() {

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">bpm_hw3</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_prescript">PrescriptActivity</string>
 </resources>

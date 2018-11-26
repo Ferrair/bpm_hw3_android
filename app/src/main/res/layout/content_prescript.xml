@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.qihang.bpm_hw3.activity.PrescriptActivity"
+    tools:showIn="@layout/activity_prescript">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="处方ID："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/prescript_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="118037910008"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="时间："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/prescript_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="2018/9/8 12：32"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="取药地点："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/pharmacy_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="第五取药窗口"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="开药医生："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/doctor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="张医生"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="细节："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/prescript_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题....(问题描述不超过100个字）"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/goto_payment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:src="@android:drawable/ic_lock_lock"
+                    android:text="查看缴费单>>"
+                    android:textColor="#666666"
+                    android:textSize="32px" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

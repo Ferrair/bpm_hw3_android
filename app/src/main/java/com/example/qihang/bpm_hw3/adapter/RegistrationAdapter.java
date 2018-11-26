@@ -22,7 +22,7 @@ import java.util.List;
 public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapter.Holder> {
 
     private List<Registration> data;
-    protected Context mContext;
+    private Context mContext;
 
 
     public RegistrationAdapter(Context mContext, List<Registration> data) {
@@ -53,11 +53,11 @@ public class RegistrationAdapter extends RecyclerView.Adapter<RegistrationAdapte
         return data.size();
     }
 
-    public class Holder extends RecyclerView.ViewHolder {
-        public TextView registration_time, registration_detail, newest, registration_id;
+     class Holder extends RecyclerView.ViewHolder {
+         TextView registration_time, registration_detail, newest, registration_id;
 
         //实现的方法
-        public Holder(View itemView) {
+         Holder(View itemView) {
             super(itemView);
             registration_time = itemView.findViewById(R.id.registration_time);
             registration_detail = itemView.findViewById(R.id.registration_detail);

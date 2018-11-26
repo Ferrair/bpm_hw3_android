@@ -33,6 +33,14 @@
             android:theme="@style/AppTheme.NoActionBarWhite" />
         <activity
             android:name=".activity.RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.PrescriptListActivity"
+            android:label="@string/title_activity_prescript"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.PrescriptActivity"
+            android:label="@string/title_activity_prescript"
             android:theme="@style/AppTheme.NoActionBarWhite"/>
     </application>
 
