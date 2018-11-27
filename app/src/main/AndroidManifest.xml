@@ -17,8 +17,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PaymentActivity" />
-        <activity android:name=".activity.ScanCardActivity" />
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -49,7 +47,15 @@
         <activity
             android:name=".activity.ExaminationActivity"
             android:label="@string/title_activity_examination"
-            android:theme="@style/AppTheme.NoActionBarWhite"/>
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.PaymentListActivity"
+            android:label="@string/title_activity_payment_list"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.PaymentActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity android:name=".activity.ScanCardActivity" />
     </application>
 
 </manifest>

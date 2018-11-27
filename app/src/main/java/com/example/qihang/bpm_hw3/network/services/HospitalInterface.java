@@ -70,8 +70,19 @@ public interface HospitalInterface {
      * 得到一个病人所有的缴费单
      */
     @GET("Payment")
-    Call<ResponseBody> payment(@Query("Examination.patient_id.id") String patient_id);
+    Call<ResponseBody> payment(@Query("Payment.patient_id.id") String patient_id);
 
+    /**
+     * Examination 查找 Payment
+     */
+    @GET("Payment")
+    Call<ResponseBody> searchPaymentByExamination(@Query("Payment.examination_id.id") String examination_id);
+
+    /**
+     * Prescript 查找 Payment
+     */
+    @GET("Payment")
+    Call<ResponseBody> searchPaymentByPrescript(@Query("Payment.prescript_id.id") String prescript_id);
 
     /**
      * 得到检查结果的信息

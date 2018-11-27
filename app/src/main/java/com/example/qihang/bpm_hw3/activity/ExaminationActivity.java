@@ -1,6 +1,7 @@
 package com.example.qihang.bpm_hw3.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -74,6 +75,9 @@ public class ExaminationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to Payment Activity
+                Intent intent = new Intent(ExaminationActivity.this, PaymentActivity.class);
+                intent.putExtra("examination_id", mID.getText().toString());
+                startActivity(intent);
             }
         });
 

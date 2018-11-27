@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.qihang.bpm_hw3.activity.PaymentActivity"
+    tools:showIn="@layout/activity_payment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ffffff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="缴费单ID："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/payment_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="118037910008"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="时间："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/payment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="2018/9/8 12：32"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="金额 ¥："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/payment_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="1134"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="缴费类型："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/payment_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="检查单缴费"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="缴费项目："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/payment_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题这里具体出现了什么问题....(问题描述不超过100个字）"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/pay"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_button"
+        android:text="支付宝缴费"
+        android:visibility="gone"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</LinearLayout>

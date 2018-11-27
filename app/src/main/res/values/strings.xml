@@ -4,4 +4,5 @@
     <string name="title_activity_prescript">PrescriptActivity</string>
     <string name="title_activity_examination_list">ExaminationList</string>
     <string name="title_activity_examination">ExaminationActivity</string>
+    <string name="title_activity_payment_list">PaymentListActivity</string>
 </resources>

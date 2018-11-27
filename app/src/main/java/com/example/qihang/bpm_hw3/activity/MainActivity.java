@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         mPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), PaymentListActivity.class);
+                intent.putExtra("patient_id", patientId);
+                startActivity(intent);
             }
         });
         mExamination_result.setOnClickListener(new View.OnClickListener() {

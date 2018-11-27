@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context="com.example.qihang.bpm_hw3.activity.PrescriptListActivity"
-    tools:showIn="@layout/activity_prescript_list">
+    tools:context="com.example.qihang.bpm_hw3.activity.PaymentListActivity"
+    tools:showIn="@layout/activity_payment_list">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

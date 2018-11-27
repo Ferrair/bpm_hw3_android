@@ -1,6 +1,7 @@
 package com.example.qihang.bpm_hw3.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -72,6 +73,9 @@ public class PrescriptActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Go to Payment Activity
+                Intent intent = new Intent(PrescriptActivity.this, PaymentActivity.class);
+                intent.putExtra("prescript_id", mID.getText().toString());
+                startActivity(intent);
             }
         });
 

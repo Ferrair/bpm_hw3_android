@@ -1,5 +1,7 @@
 package com.example.qihang.bpm_hw3.network.model;
 
+import android.util.Log;
+
 import com.example.qihang.bpm_hw3.utils.TimeUtils;
 
 /**
@@ -11,11 +13,12 @@ public class Payment {
     public String status;  // unpaid, paid
     public String type; // Examination, Prescript
     public long timestamp;
-    public int number;
+    public float number;
 
     public Patient patient_id;
     public OutpatientDoctor outpatient_doctor_id;
     public Examination examination_id;
+    public Prescript prescript_id;
 
     public String getId() {
         return id;
@@ -29,12 +32,32 @@ public class Payment {
         return status;
     }
 
+    public String getStatusFormatted() {
+
+        if (status.equals("unpaid"))
+            return "未付款";
+        if (status.equals("paid"))
+            return "已付款";
+        return "";
+    }
+
     public void setStatus(String status) {
         this.status = status;
     }
 
     public String getType() {
         return type;
+    }
+
+    public String getTypeFormatted() {
+        if (type.equals("Examination"))
+            return "检查项目缴费";
+        if (type.equals("Prescript"))
+            return "药品缴费";
+        if (type.equals("Both"))
+            return "检查项目缴费 + 药品缴费";
+        return "";
+
     }
 
     public void setType(String type) {
@@ -49,11 +72,11 @@ public class Payment {
         this.timestamp = timestamp;
     }
 
-    public int getNumber() {
+    public float getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(float number) {
         this.number = number;
     }
 
@@ -79,6 +102,14 @@ public class Payment {
 
     public void setExamination_id(Examination examination_id) {
         this.examination_id = examination_id;
+    }
+
+    public Prescript getPrescript_id() {
+        return prescript_id;
+    }
+
+    public void setPrescript_id(Prescript prescript_id) {
+        this.prescript_id = prescript_id;
     }
 
     public String getTimeString() {
