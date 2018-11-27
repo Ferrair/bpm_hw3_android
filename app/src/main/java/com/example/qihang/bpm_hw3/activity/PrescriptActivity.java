@@ -74,6 +74,13 @@ public class PrescriptActivity extends AppCompatActivity {
                 // Go to Payment Activity
             }
         });
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private String stringHandler(String detail) {

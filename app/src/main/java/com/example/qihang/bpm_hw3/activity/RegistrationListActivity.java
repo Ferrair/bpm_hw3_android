@@ -63,6 +63,13 @@ public class RegistrationListActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     @Override

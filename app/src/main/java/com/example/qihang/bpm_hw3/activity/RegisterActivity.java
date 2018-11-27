@@ -101,6 +101,13 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
                 mFinish.setClickable(false);
             }
         });
+
+        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void register() {
