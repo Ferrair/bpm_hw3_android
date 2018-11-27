@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         mExamination_result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
         mDrug_result.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
         mExamination.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getApplicationContext(), ExaminationListActivity.class);
+                intent.putExtra("patient_id", patientId);
+                startActivity(intent);
             }
         });
     }

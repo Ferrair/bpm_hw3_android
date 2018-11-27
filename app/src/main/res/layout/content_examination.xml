@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.qihang.bpm_hw3.activity.PrescriptActivity"
-    tools:showIn="@layout/activity_prescript">
+    tools:context="com.example.qihang.bpm_hw3.activity.ExaminationActivity"
+    tools:showIn="@layout/activity_examination">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -25,12 +25,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="处方ID："
+                android:text="检查单ID："
                 android:textColor="#000000"
                 android:textSize="48px" />
 
             <TextView
-                android:id="@+id/prescript_id"
+                android:id="@+id/examination_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
@@ -48,7 +48,7 @@
                 android:textSize="48px" />
 
             <TextView
-                android:id="@+id/prescript_time"
+                android:id="@+id/examination_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
@@ -61,30 +61,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="取药地点："
+                android:text="科室医生："
                 android:textColor="#000000"
                 android:textSize="48px" />
 
             <TextView
-                android:id="@+id/pharmacy_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:lineSpacingMultiplier="1.2"
-                android:paddingLeft="10dp"
-                android:text="第五取药窗口"
-                android:textColor="@color/main_content_text"
-                android:textSize="@dimen/main_text_size" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="开药医生："
-                android:textColor="#000000"
-                android:textSize="48px" />
-
-            <TextView
-                android:id="@+id/doctor_name"
+                android:id="@+id/medical_doctor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
@@ -97,12 +79,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
+                android:text="门诊医生："
+                android:textColor="#000000"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/outpatient_doctor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lineSpacingMultiplier="1.2"
+                android:paddingLeft="10dp"
+                android:text="王医生"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
                 android:text="细节："
                 android:textColor="#000000"
                 android:textSize="48px" />
 
             <TextView
-                android:id="@+id/prescript_detail"
+                android:id="@+id/examination_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.2"
