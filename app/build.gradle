@@ -40,6 +40,8 @@ dependencies {
     implementation files('libs/universal-image-loader-1.9.4.jar')
 
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
-    // implementation 'com.afollestad.material-dialogs:core:2.0.0-rc1'
     implementation 'com.github.razerdp:BasePopup:2.0.9'
+
+    // QR Code
+    compile 'com.google.zxing:core:3.3.0'
 }
