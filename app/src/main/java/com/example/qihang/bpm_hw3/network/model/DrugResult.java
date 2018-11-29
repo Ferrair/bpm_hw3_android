@@ -11,7 +11,7 @@ public class DrugResult {
     public String detail;
     public long timestamp;
 
-    public Patient patient_id;
+    public Patient patient_id_1;
     public Pharmacy pharmacy_id;
     public Prescript prescript_id;
 
@@ -39,12 +39,12 @@ public class DrugResult {
         this.timestamp = timestamp;
     }
 
-    public Patient getPatient_id() {
-        return patient_id;
+    public Patient getPatient_id_1() {
+        return patient_id_1;
     }
 
-    public void setPatient_id(Patient patient_id) {
-        this.patient_id = patient_id;
+    public void setPatient_id_1(Patient patient_id_1) {
+        this.patient_id_1 = patient_id_1;
     }
 
     public Pharmacy getPharmacy_id() {

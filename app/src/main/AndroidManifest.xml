@@ -62,6 +62,12 @@
         <activity
             android:name=".activity.ExaminationResultActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.DrugResultListActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.DrugResultActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
     </application>
 
 </manifest>

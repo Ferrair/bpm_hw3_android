@@ -107,7 +107,7 @@ public interface HospitalInterface {
      * 得到一个病人所有检查结果
      */
     @GET("Drugresult")
-    Call<ResponseBody> drugResult(@Query("Drugresult.patient_id.id") String patient_id);
+    Call<ResponseBody> drugResult(@Query("Drugresult.patient_id_1.id") String patient_id);
 
 
     /**
