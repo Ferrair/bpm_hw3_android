@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -71,6 +72,13 @@ public interface HospitalInterface {
      */
     @GET("Payment")
     Call<ResponseBody> payment(@Query("Payment.patient_id.id") String patient_id);
+
+
+    /**
+     * 缴费
+     */
+    @PUT("Payment/{id}")
+    Call<ResponseBody> doPay(@Path("id") String id);
 
     /**
      * Examination 查找 Payment

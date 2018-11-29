@@ -69,7 +69,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Holder> 
             super(itemView);
             payment_id = itemView.findViewById(R.id.payment_id);
             payment_number = itemView.findViewById(R.id.payment_number);
-            payment_status = itemView.findViewById(R.id.payment_status);
+            payment_status = itemView.findViewById(R.id.paid);
             payment_type = itemView.findViewById(R.id.payment_type);
             payment_time = itemView.findViewById(R.id.payment_time);
             root = itemView.findViewById(R.id.root);

@@ -133,6 +133,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                         if (mPayment.getStatus().equals("unpaid")) {
                             mPayButton.setVisibility(View.VISIBLE);
+                        } else {
+                            mPayButton.setVisibility(View.GONE);
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -233,9 +235,40 @@ public class PaymentActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * 修改Payment的状态
+     */
     private void paymentSuccess() {
-        // TODO
-        // 修改Payment status
+        Call<ResponseBody> call = mHospitalInterface.doPay(mPayment.getId());
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    try {
+                        String json = response.body().string();
+                        mPayment = JsonUtil.fromJson(json, Payment.class);
+                        mId.setText(mPayment.getId());
+                        mTime.setText(mPayment.getTimeString());
+                        mNumber.setText(mPayment.getNumber() + "");
+                        mType.setText(mPayment.getTypeFormatted());
+                        mDetail.setText(detail());
+
+                        if (mPayment.getStatus().equals("unpaid")) {
+                            mPayButton.setVisibility(View.VISIBLE);
+                        } else {
+                            mPayButton.setVisibility(View.GONE);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("PaymentActivity onFailure", t.toString());
+            }
+        });
     }
 
     protected class PaymentList {

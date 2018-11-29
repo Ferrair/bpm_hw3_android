@@ -42,7 +42,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/payment_status"
+                android:id="@+id/paid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -53,8 +53,7 @@
                 android:gravity="center"
                 android:text="未缴费"
                 android:textColor="@color/main_hint_text"
-                android:textSize="@dimen/main_text_size"
-                android:visibility="invisible" />
+                android:textSize="@dimen/main_text_size" />
         </RelativeLayout>
 
         <LinearLayout
