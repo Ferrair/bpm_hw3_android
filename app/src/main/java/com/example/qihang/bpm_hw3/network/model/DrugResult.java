@@ -13,6 +13,7 @@ public class DrugResult {
 
     public Patient patient_id;
     public Pharmacy pharmacy_id;
+    public Prescript prescript_id;
 
     public String getId() {
         return id;
@@ -56,5 +57,13 @@ public class DrugResult {
 
     public String getTimeString() {
         return TimeUtils.timestamp2String(getTimestamp());
+    }
+
+    public Prescript getPrescript_id() {
+        return prescript_id;
+    }
+
+    public void setPrescript_id(Prescript prescript_id) {
+        this.prescript_id = prescript_id;
     }
 }

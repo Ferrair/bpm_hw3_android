@@ -56,6 +56,12 @@
             android:name=".activity.PaymentActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
         <activity android:name=".activity.ScanCardActivity" />
+        <activity
+            android:name=".activity.ExaminationResultListActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity
+            android:name=".activity.ExaminationResultActivity"
+            android:theme="@style/AppTheme.NoActionBarWhite" />
     </application>
 
 </manifest>

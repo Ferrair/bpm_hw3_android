@@ -14,6 +14,7 @@ public class ExaminationResult {
 
     public Patient patient_id_1;
     public MedicalDoctor medical_doctor_id;
+    public Examination examination_id;
 
     public String getId() {
         return id;
@@ -67,4 +68,11 @@ public class ExaminationResult {
         return TimeUtils.timestamp2String(getTimestamp());
     }
 
+    public Examination getExamination_id() {
+        return examination_id;
+    }
+
+    public void setExamination_id(Examination examination_id) {
+        this.examination_id = examination_id;
+    }
 }
