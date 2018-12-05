@@ -3,6 +3,7 @@ package com.example.qihang.bpm_hw3.activity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -72,33 +73,6 @@ public class ScanCardActivity extends AppCompatActivity {
 
             }
         });
-
-//        findViewById(R.id.id_test).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Call<ResponseBody> call = mHospitalInterface.examinationItem("1542702390155");
-//                call.enqueue(new Callback<ResponseBody>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                        if (response.isSuccessful()) {
-//                            try {
-//                                String json = response.body().string();
-//                                Examination examination = JsonUtil.fromJson(json, Examination.class);
-//                                Log.i("ScanCardActivity", examination.id);
-//
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                        Log.i("ScanCardActivity onFailure", t.toString());
-//                    }
-//                });
-//            }
-//        });
     }
 
     /**
@@ -116,7 +90,13 @@ public class ScanCardActivity extends AppCompatActivity {
                     try {
                         String json = response.body().string();
                         Patient patient = JsonUtil.fromJson(json, Patient.class);
-                        // TODO with patient
+                        SharedPreferences.Editor editor = getSharedPreferences("patient", MODE_PRIVATE).edit();
+                        editor.putString("name", patient.getName());
+                        editor.putString("patientId", patient.getId());
+                        editor.apply();
+
+                        Intent intent = new Intent(ScanCardActivity.this, MainActivity.class);
+                        startActivity(intent);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

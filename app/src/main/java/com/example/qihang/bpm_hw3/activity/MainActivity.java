@@ -1,6 +1,7 @@
 package com.example.qihang.bpm_hw3.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,10 +38,9 @@ public class MainActivity extends AppCompatActivity {
         mPrescript = findViewById(R.id.prescript);
         mExamination = findViewById(R.id.examination);
 
-
-        // name = getIntent().getStringExtra("name");
-        // patientId = getIntent().getStringExtra("patientId");
-        patientId = "1542698662334";
+        SharedPreferences sharedPreferences = getSharedPreferences("patient", MODE_PRIVATE);
+        String name = sharedPreferences.getString("name", "王启航");
+        final String patientId = sharedPreferences.getString("patientId", "1542698662334");
 
         mRegistration.setOnClickListener(new View.OnClickListener() {
             @Override

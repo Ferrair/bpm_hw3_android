@@ -44,4 +44,7 @@ dependencies {
 
     // QR Code
     compile 'com.google.zxing:core:3.3.0'
+
+    // SSE server sent events
+    compile 'com.tylerjroach:eventsource:1.2.11'
 }
