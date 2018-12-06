@@ -47,4 +47,7 @@ dependencies {
 
     // SSE server sent events
     compile 'com.tylerjroach:eventsource:1.2.11'
+
+    // PDF Viewer
+    compile 'com.lidong.pdf:android_pdf:1.0.1'
 }

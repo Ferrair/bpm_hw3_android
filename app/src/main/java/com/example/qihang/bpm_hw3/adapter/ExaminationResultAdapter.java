@@ -47,7 +47,9 @@ public class ExaminationResultAdapter extends RecyclerView.Adapter<ExaminationRe
             holder.need_re_examination.setVisibility(View.GONE);
         }
         holder.examination_result_detail.setText(item.getDetail());
-        holder.examination_time.setText(item.getExamination_id().getTimeString());
+        if (item.getExamination_id() != null && item.getExamination_id().getTimeString() != null) {
+            holder.examination_time.setText(item.getExamination_id().getTimeString());
+        }
         holder.medical_doctor_name.setText(item.getMedical_doctor_id().getName());
 
         holder.root.setOnClickListener(new View.OnClickListener() {

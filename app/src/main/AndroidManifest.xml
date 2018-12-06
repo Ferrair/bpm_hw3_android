@@ -17,16 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ScanCardActivity">
+        <activity android:name=".activity.ScanCardActivity"></activity>
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.RegistrationListActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
@@ -56,7 +56,6 @@
         <activity
             android:name=".activity.PaymentActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
-
         <activity
             android:name=".activity.ExaminationResultListActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
@@ -69,6 +68,7 @@
         <activity
             android:name=".activity.DrugResultActivity"
             android:theme="@style/AppTheme.NoActionBarWhite" />
+        <activity android:name=".activity.PDFActivity"></activity>
     </application>
 
 </manifest>

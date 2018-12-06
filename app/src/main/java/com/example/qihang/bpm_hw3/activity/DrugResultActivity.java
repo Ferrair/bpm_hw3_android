@@ -1,6 +1,7 @@
 package com.example.qihang.bpm_hw3.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -46,12 +47,6 @@ public class DrugResultActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.report).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-
         HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
         Call<ResponseBody> call = mHospitalInterface.drugResultItem(getIntent().getStringExtra("drug_result_id"));
         call.enqueue(new Callback<ResponseBody>() {
@@ -78,5 +73,16 @@ public class DrugResultActivity extends AppCompatActivity {
                 Log.i("DrugResultActivity onFailure", t.toString());
             }
         });
+
+        findViewById(R.id.report).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DrugResultActivity.this, PDFActivity.class);
+                intent.putExtra("filename", mID.getText().toString());
+                intent.putExtra("fileurl", "http://47.107.241.57:8080/file/U1c365fdb24129c/hospital/Drugresult/" + mID.getText().toString());
+                startActivity(intent);
+            }
+        });
+
     }
 }
