@@ -1,4 +1,8 @@
 apply plugin: 'com.android.application'
+project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
+
+// assert file(project.ext.ASSET_DIR + "/model.lite").exists()
+// assert file(project.ext.ASSET_DIR + "/labels.txt").exists()
 
 android {
     compileSdkVersion 26
@@ -16,14 +20,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    aaptOptions {
+        noCompress "tflite"
+        noCompress "lite"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+repositories {
+    maven {
+        url 'https://google.bintray.com/tensorflow'
+    }
+    google()
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    compile 'com.android.support:cardview-v7:26.1.0'
-    compile 'com.android.support:recyclerview-v7:26.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:design:23.4.0'
+    compile 'com.android.support:cardview-v7:23.4.0'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
     compile 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
@@ -50,4 +70,7 @@ dependencies {
 
     // PDF Viewer
     compile 'com.lidong.pdf:android_pdf:1.0.1'
+
+    // Tensor flow lite
+    compile 'org.tensorflow:tensorflow-lite:+'
 }

@@ -43,12 +43,9 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.Holder> {
         holder.doctor_major.setText(item.getMajor());
         ImageLoader.getInstance().displayImage("drawable://" + R.drawable.head_head, holder.doctor_image);
 
-        holder.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (itemClickListener != null) {
-                    itemClickListener.onItemClick(item, position);
-                }
+        holder.root.setOnClickListener(v -> {
+            if (itemClickListener != null) {
+                itemClickListener.onItemClick(item, position);
             }
         });
     }

@@ -39,15 +39,15 @@ public class PrescriptActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescript);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mID = findViewById(R.id.prescript_id);
-        mTime = findViewById(R.id.prescript_time);
-        mPharmacyName = findViewById(R.id.pharmacy_name);
-        mDoctorName = findViewById(R.id.doctor_name);
-        mDetail = findViewById(R.id.prescript_detail);
-        goto_payment = findViewById(R.id.goto_payment);
+        mID = (TextView) findViewById(R.id.prescript_id);
+        mTime = (TextView) findViewById(R.id.prescript_time);
+        mPharmacyName = (TextView) findViewById(R.id.pharmacy_name);
+        mDoctorName = (TextView) findViewById(R.id.doctor_name);
+        mDetail = (TextView) findViewById(R.id.prescript_detail);
+        goto_payment = (TextView) findViewById(R.id.goto_payment);
 
         HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
         Call<ResponseBody> call = mHospitalInterface.prescriptItem(getIntent().getStringExtra("prescript_id"));
@@ -76,47 +76,32 @@ public class PrescriptActivity extends AppCompatActivity {
             }
         });
 
-        goto_payment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Go to Payment Activity
-                Intent intent = new Intent(PrescriptActivity.this, PaymentActivity.class);
-                intent.putExtra("prescript_id", mID.getText().toString());
-                startActivity(intent);
-            }
+        goto_payment.setOnClickListener(v -> {
+            // Go to Payment Activity
+            Intent intent = new Intent(PrescriptActivity.this, PaymentActivity.class);
+            intent.putExtra("prescript_id", mID.getText().toString());
+            startActivity(intent);
         });
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
 
 
-        findViewById(R.id.qr_code).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bitmap mBitmap = QRCodeUtil.createQRCodeBitmap(mID.getText().toString(), 600);
-                LayoutInflater inflater = LayoutInflater.from(PrescriptActivity.this);
-                View rootLayout = inflater.inflate(R.layout.dialog_qr_code, null);
-                // 加载自定义的布局文件
-                final AlertDialog dialog = new AlertDialog.Builder(PrescriptActivity.this).create();
-                ImageView img = rootLayout.findViewById(R.id.qr_code_image);
-                img.setImageBitmap(mBitmap);
-                TextView textView = rootLayout.findViewById(R.id.qr_code_desc);
-                textView.setText(mID.getText().toString());
+        findViewById(R.id.qr_code).setOnClickListener(v -> {
+            Bitmap mBitmap = QRCodeUtil.createQRCodeBitmap(mID.getText().toString(), 600);
+            LayoutInflater inflater = LayoutInflater.from(PrescriptActivity.this);
+            View rootLayout = inflater.inflate(R.layout.dialog_qr_code, null);
+            // 加载自定义的布局文件
+            final AlertDialog dialog = new AlertDialog.Builder(PrescriptActivity.this).create();
+            ImageView img = rootLayout.findViewById(R.id.qr_code_image);
+            img.setImageBitmap(mBitmap);
+            TextView textView = rootLayout.findViewById(R.id.qr_code_desc);
+            textView.setText(mID.getText().toString());
 
-                dialog.setView(rootLayout);
+            dialog.setView(rootLayout);
 
-                dialog.show();
-                rootLayout.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View paramView) {
-                        dialog.cancel();
-                    }
-                });
+            dialog.show();
+            rootLayout.setOnClickListener(paramView -> dialog.cancel());
 
-            }
         });
     }
 

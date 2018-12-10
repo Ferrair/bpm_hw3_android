@@ -31,16 +31,13 @@ public class RemoteManager {
                 new OkHttpClient
                         .Builder()
                         .connectTimeout(5, TimeUnit.SECONDS)
-                        .addInterceptor(new Interceptor() {
-                            @Override
-                            public okhttp3.Response intercept(Interceptor.Chain chain) throws IOException {
-                                Request request = chain.request();
-                                Request.Builder requestBuilder = request.newBuilder();
-                                request = requestBuilder
-                                        .addHeader("Content-Type", "application/json;charset=UTF-8")
-                                        .build();
-                                return chain.proceed(request);
-                            }
+                        .addInterceptor(chain -> {
+                            Request request = chain.request();
+                            Request.Builder requestBuilder = request.newBuilder();
+                            request = requestBuilder
+                                    .addHeader("Content-Type", "application/json;charset=UTF-8")
+                                    .build();
+                            return chain.proceed(request);
                         })
                         .build();
 

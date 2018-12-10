@@ -1,5 +1,6 @@
 package com.example.qihang.bpm_hw3.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.qihang.bpm_hw3.R;
@@ -44,13 +46,11 @@ public class DrugResultAdapter extends RecyclerView.Adapter<DrugResultAdapter.Ho
         holder.drug_result_detail.setText(item.getDetail());
         holder.prescript_time.setText(item.getPrescript_id().getTimeString());
         holder.pharmacy_name.setText(item.getPharmacy_id().getName());
-        holder.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, DrugResultActivity.class);
-                intent.putExtra("drug_result_id", item.getId());
-                mContext.startActivity(intent);
-            }
+        holder.root.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, DrugResultActivity.class);
+            intent.putExtra("drug_result_id", item.getId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
         });
     }
 
@@ -61,7 +61,7 @@ public class DrugResultAdapter extends RecyclerView.Adapter<DrugResultAdapter.Ho
 
     class Holder extends RecyclerView.ViewHolder {
         TextView drug_result_id, drug_result_detail, prescript_time, pharmacy_name;
-        CardView root;
+        LinearLayout root;
 
         //实现的方法
         Holder(View itemView) {

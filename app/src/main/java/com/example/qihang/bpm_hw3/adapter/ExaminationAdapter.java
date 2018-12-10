@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.qihang.bpm_hw3.R;
@@ -44,13 +45,11 @@ public class ExaminationAdapter extends RecyclerView.Adapter<ExaminationAdapter.
         holder.examination_detail.setText(item.getDetail());
         holder.examination_time.setText(item.getTimeString());
         holder.medical_doctor_name.setText(item.getMedical_doctor_id().getName());
-        holder.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, ExaminationActivity.class);
-                intent.putExtra("examination_id", item.getId());
-                mContext.startActivity(intent);
-            }
+        holder.root.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, ExaminationActivity.class);
+            intent.putExtra("examination_id", item.getId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
         });
     }
 
@@ -61,7 +60,7 @@ public class ExaminationAdapter extends RecyclerView.Adapter<ExaminationAdapter.
 
     class Holder extends RecyclerView.ViewHolder {
         TextView examination_id, examination_detail, examination_time, medical_doctor_name;
-        CardView root;
+        LinearLayout root;
 
         //实现的方法
         Holder(View itemView) {

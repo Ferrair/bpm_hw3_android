@@ -60,18 +60,15 @@ public class ScanCardActivity extends AppCompatActivity {
         mHospitalInterface = RemoteManager.create(HospitalInterface.class);
 
         // 身份证反面拍照
-        findViewById(R.id.id_card_back_button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScanCardActivity.this, CameraActivity.class);
-                intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                        FileUtil.getSaveFile(getApplication()).getAbsolutePath());
-                intent.putExtra(CameraActivity.KEY_NATIVE_ENABLE, true);
-                intent.putExtra(CameraActivity.KEY_NATIVE_MANUAL, true);
-                intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_ID_CARD_FRONT);
-                startActivityForResult(intent, REQUEST_CODE_CAMERA);
+        findViewById(R.id.id_card_back_button).setOnClickListener(v -> {
+            Intent intent = new Intent(ScanCardActivity.this, CameraActivity.class);
+            intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
+                    FileUtil.getSaveFile(getApplication()).getAbsolutePath());
+            intent.putExtra(CameraActivity.KEY_NATIVE_ENABLE, true);
+            intent.putExtra(CameraActivity.KEY_NATIVE_MANUAL, true);
+            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_ID_CARD_FRONT);
+            startActivityForResult(intent, REQUEST_CODE_CAMERA);
 
-            }
         });
     }
 
@@ -82,30 +79,34 @@ public class ScanCardActivity extends AppCompatActivity {
      */
     private void registerPatient(String name) {
         Patient patient = new Patient(name);
-        Call<ResponseBody> call = mHospitalInterface.register(patient.build());
+        Call<ResponseBody> call = mHospitalInterface.patient(patient.build());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    try {
+                try {
+                    if (response.isSuccessful()) {
                         String json = response.body().string();
                         Patient patient = JsonUtil.fromJson(json, Patient.class);
                         SharedPreferences.Editor editor = getSharedPreferences("patient", MODE_PRIVATE).edit();
                         editor.putString("name", patient.getName());
                         editor.putString("patientId", patient.getId());
                         editor.apply();
-
+                        Log.i("ScanCardActivity onResponse", json);
                         Intent intent = new Intent(ScanCardActivity.this, MainActivity.class);
                         startActivity(intent);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                    } else {
+                        Log.e("ScanCardActivity onResponse", response.errorBody().string());
                     }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e("ScanCardActivity onResponse", e.getMessage());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("ScanCardActivity onFailure", t.toString());
+                Log.e("ScanCardActivity onFailure", t.toString());
             }
         });
     }

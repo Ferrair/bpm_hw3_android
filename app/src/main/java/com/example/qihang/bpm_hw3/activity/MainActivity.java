@@ -30,66 +30,51 @@ public class MainActivity extends AppCompatActivity {
         initStatus(R.color.status_bar);
 
 
-        mName = findViewById(R.id.name);
-        mRegistration = findViewById(R.id.registration);
-        mPayment = findViewById(R.id.payment);
-        mExamination_result = findViewById(R.id.examination_result);
-        mDrug_result = findViewById(R.id.drug_result);
-        mPrescript = findViewById(R.id.prescript);
-        mExamination = findViewById(R.id.examination);
+        mName = (TextView) findViewById(R.id.name);
+        mRegistration = (TextView) findViewById(R.id.registration);
+        mPayment = (TextView) findViewById(R.id.payment);
+        mExamination_result = (TextView) findViewById(R.id.examination_result);
+        mDrug_result = (TextView) findViewById(R.id.drug_result);
+        mPrescript = (TextView) findViewById(R.id.prescript);
+        mExamination = (TextView) findViewById(R.id.examination);
 
         SharedPreferences sharedPreferences = getSharedPreferences("patient", MODE_PRIVATE);
         String name = sharedPreferences.getString("name", "王启航");
-        final String patientId = sharedPreferences.getString("patientId", "1542698662334");
+        // final String patientId = sharedPreferences.getString("patientId", "1542698662334");
+        String patientId = "1544412520686";
 
-        mRegistration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RegistrationListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
-            }
-        });
-        mPayment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PaymentListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
-            }
-        });
-        mExamination_result.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ExaminationResultListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
-            }
-        });
-        mDrug_result.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DrugResultListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
+        mName.setText(name);
 
-            }
+        mRegistration.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RegistrationListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
         });
-        mPrescript.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PrescriptListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
-            }
+        mPayment.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PaymentListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
         });
-        mExamination.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ExaminationListActivity.class);
-                intent.putExtra("patient_id", patientId);
-                startActivity(intent);
-            }
+        mExamination_result.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ExaminationResultListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
+        });
+        mDrug_result.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), DrugResultListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
+
+        });
+        mPrescript.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PrescriptListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
+        });
+        mExamination.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ExaminationListActivity.class);
+            intent.putExtra("patient_id", patientId);
+            startActivity(intent);
         });
     }
 

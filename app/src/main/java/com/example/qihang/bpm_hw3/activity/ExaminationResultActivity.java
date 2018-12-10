@@ -37,22 +37,17 @@ public class ExaminationResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_examination_result);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mID = findViewById(R.id.examination_result_id);
-        mTime = findViewById(R.id.examination_time);
-        mMedicalDoctorName = findViewById(R.id.medical_doctor_name);
-        mResultDetail = findViewById(R.id.examination_result_detail);
-        mExaminationDetail = findViewById(R.id.examination_detail);
-        mReExamination = findViewById(R.id.need_re_examination);
+        mID = (TextView) findViewById(R.id.examination_result_id);
+        mTime = (TextView) findViewById(R.id.examination_time);
+        mMedicalDoctorName = (TextView) findViewById(R.id.medical_doctor_name);
+        mResultDetail = (TextView) findViewById(R.id.examination_result_detail);
+        mExaminationDetail = (TextView) findViewById(R.id.examination_detail);
+        mReExamination = (TextView) findViewById(R.id.need_re_examination);
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
 
         mHospitalInterface = RemoteManager.create(HospitalInterface.class);
         Call<ResponseBody> call = mHospitalInterface.examinationResultItem(getIntent().getStringExtra("examination_result_id"));
@@ -84,14 +79,11 @@ public class ExaminationResultActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.report).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ExaminationResultActivity.this, PDFActivity.class);
-                intent.putExtra("filename", mID.getText().toString());
-                intent.putExtra("fileurl", "http://47.107.241.57:8080/file/U1c365fdb24129c/hospital/Examinationresult/" + mID.getText().toString());
-                startActivity(intent);
-            }
+        findViewById(R.id.report).setOnClickListener(v -> {
+            Intent intent = new Intent(ExaminationResultActivity.this, PDFActivity.class);
+            intent.putExtra("filename", mID.getText().toString());
+            intent.putExtra("fileurl", "http://47.107.241.57:8080/file/U1c365fdb24129c/hospital/Examinationresult/" + mID.getText().toString());
+            startActivity(intent);
         });
     }
 }

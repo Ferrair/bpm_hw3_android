@@ -20,7 +20,7 @@ public class PDFActivity extends AppCompatActivity implements OnPageChangeListen
         setContentView(R.layout.activity_pdf);
         String filename = getIntent().getStringExtra("filename");
         String fileurl = getIntent().getStringExtra("fileurl");
-        PDFView pdfView = findViewById(R.id.pdfView);
+        PDFView pdfView = (PDFView) findViewById(R.id.pdfView);
         pdfView.fileFromLocalStorage(this, this, this, fileurl, filename);
     }
 

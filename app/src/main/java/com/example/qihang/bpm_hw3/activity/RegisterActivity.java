@@ -10,17 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.util.Log;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qihang.bpm_hw3.R;
-import com.example.qihang.bpm_hw3.adapter.DoctorAdapter;
 import com.example.qihang.bpm_hw3.custom.ListDialog;
 import com.example.qihang.bpm_hw3.network.RemoteManager;
 import com.example.qihang.bpm_hw3.network.model.ForeignModel;
-import com.example.qihang.bpm_hw3.network.model.OutpatientDoctor;
 import com.example.qihang.bpm_hw3.network.model.Registration;
 import com.example.qihang.bpm_hw3.network.services.HospitalInterface;
 import com.example.qihang.bpm_hw3.utils.JsonUtil;
@@ -50,73 +47,58 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // TODO 加入机器学习
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mRegister_detail = findViewById(R.id.register_detail);
+        mRegister_detail = (EditText) findViewById(R.id.register_detail);
 
-        mRegister_time = findViewById(R.id.register_time);
+        mRegister_time = (EditText) findViewById(R.id.register_time);
         mRegister_time.setInputType(InputType.TYPE_NULL);
-        mRegister_time.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
-                        .setCallBack(RegisterActivity.this)
-                        .setCancelStringId("取消")
-                        .setSureStringId("确定")
-                        .setTitleStringId("就诊时间")
-                        .setMonthText("月")
-                        .setDayText("日")
-                        .setCyclic(false)
-                        .setType(Type.MONTH_DAY_HOUR_MIN)
-                        .setMinMillseconds(System.currentTimeMillis())
-                        .setCurrentMillseconds(System.currentTimeMillis())
-                        .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
-                        .setWheelItemTextNormalColor(getResources().getColor(R.color.timetimepicker_default_text_color))
-                        .setWheelItemTextSelectorColor(getResources().getColor(R.color.timepicker_toolbar_bg))
-                        .setWheelItemTextSize(12)
-                        .build();
-                mDialogAll.show(getSupportFragmentManager(), "month_day_hour_minute");
-            }
+        mRegister_time.setOnClickListener(v -> {
+            TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
+                    .setCallBack(RegisterActivity.this)
+                    .setCancelStringId("取消")
+                    .setSureStringId("确定")
+                    .setTitleStringId("就诊时间")
+                    .setMonthText("月")
+                    .setDayText("日")
+                    .setCyclic(false)
+                    .setType(Type.MONTH_DAY_HOUR_MIN)
+                    .setMinMillseconds(System.currentTimeMillis())
+                    .setCurrentMillseconds(System.currentTimeMillis())
+                    .setThemeColor(getResources().getColor(R.color.timepicker_dialog_bg))
+                    .setWheelItemTextNormalColor(getResources().getColor(R.color.timetimepicker_default_text_color))
+                    .setWheelItemTextSelectorColor(getResources().getColor(R.color.timepicker_toolbar_bg))
+                    .setWheelItemTextSize(12)
+                    .build();
+            mDialogAll.show(getSupportFragmentManager(), "month_day_hour_minute");
         });
 
-        mRegister_doctor = findViewById(R.id.register_doctor);
+        mRegister_doctor = (EditText) findViewById(R.id.register_doctor);
         mRegister_doctor.setInputType(InputType.TYPE_NULL);
-        mRegister_doctor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final ListDialog popup = new ListDialog(RegisterActivity.this);
-                popup.setmItemClickListener(new DoctorAdapter.ItemClickListener() {
-                    @Override
-                    public void onItemClick(OutpatientDoctor data, int position) {
-                        popup.dismiss();
-                        mRegister_doctor.setText(data.getName());
-                        doctor_id = data.getId();
-                        Log.i("RegisterActivity doctor", doctor_id);
+        mRegister_doctor.setOnClickListener(v -> {
+            final ListDialog popup = new ListDialog(RegisterActivity.this);
+            popup.setmItemClickListener((data, position) -> {
+                popup.dismiss();
+                mRegister_doctor.setText(data.getName());
+                doctor_id = data.getId();
+                Log.i("RegisterActivity doctor", doctor_id);
 
-                    }
-                });
-                popup.showPopupWindow();
-            }
+            });
+            popup.showPopupWindow();
         });
 
-        final TextView mFinish = findViewById(R.id.finish);
-        mFinish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                register();
-                mFinish.setClickable(false);
-            }
+        final TextView mFinish = (TextView) findViewById(R.id.finish);
+        mFinish.setOnClickListener(v -> {
+            register();
+            mFinish.setClickable(false);
         });
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
     }
 
     private void register() {

@@ -58,26 +58,16 @@ public class PaymentActivity extends AppCompatActivity {
         requestPermission();
         EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
 
-        mPayButton = findViewById(R.id.pay);
-        mId = findViewById(R.id.payment_id);
-        mNumber = findViewById(R.id.payment_number);
-        mTime = findViewById(R.id.payment_time);
-        mDetail = findViewById(R.id.payment_detail);
-        mType = findViewById(R.id.payment_type);
+        mPayButton = (Button) findViewById(R.id.pay);
+        mId = (TextView) findViewById(R.id.payment_id);
+        mNumber = (TextView) findViewById(R.id.payment_number);
+        mTime = (TextView) findViewById(R.id.payment_time);
+        mDetail = (TextView) findViewById(R.id.payment_detail);
+        mType = (TextView) findViewById(R.id.payment_type);
 
-        mPayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                pay();
-            }
-        });
+        mPayButton.setOnClickListener(v -> pay());
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
 
         mHospitalInterface = RemoteManager.create(HospitalInterface.class);
 
@@ -122,7 +112,6 @@ public class PaymentActivity extends AppCompatActivity {
                             mPayment = JsonUtil.fromJson(json, Payment.class);
                         } else {
                             PaymentList result = JsonUtil.fromJson(json, PaymentList.class);
-                            // TODO 会产生多个Payment， 这里选择第一个，后面需要修改
                             mPayment = result.list.get(0);
                         }
                         mId.setText(mPayment.getId());
@@ -164,7 +153,7 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        // TODO 加载数据
     }
 
     private void pay() {
@@ -173,19 +162,15 @@ public class PaymentActivity extends AppCompatActivity {
         String sign = OrderInfoUtil2_0.getSign(params, RSA2_PRIVATE, true);
         final String orderInfo = orderParam + "&" + sign;
 
-        Runnable payRunnable = new Runnable() {
+        Runnable payRunnable = () -> {
+            PayTask alipay = new PayTask(PaymentActivity.this);
+            Map<String, String> result = alipay.payV2(orderInfo, true);
+            Log.i("PaymentActivity Result", result.toString());
 
-            @Override
-            public void run() {
-                PayTask alipay = new PayTask(PaymentActivity.this);
-                Map<String, String> result = alipay.payV2(orderInfo, true);
-                Log.i("PaymentActivity Result", result.toString());
-
-                Message msg = new Message();
-                msg.what = 1;
-                msg.obj = result;
-                mHandler.sendMessage(msg);
-            }
+            Message msg = new Message();
+            msg.what = 1;
+            msg.obj = result;
+            mHandler.sendMessage(msg);
         };
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
@@ -236,6 +221,7 @@ public class PaymentActivity extends AppCompatActivity {
     };
 
     /**
+     * TODO ERROR
      * 修改Payment的状态
      */
     private void paymentSuccess() {

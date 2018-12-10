@@ -1,124 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/root"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px"
+        android:orientation="horizontal"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="拿药结果ID："
+                android:textColor="@color/main_title_text"
+                android:textSize="45px" />
+
+            <TextView
+                android:id="@+id/drug_result_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="118037910008"
+                android:textColor="@color/main_title_text"
+                android:textSize="45px" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="10dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="88px"
-            android:orientation="horizontal"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="拿药结果ID："
-                    android:textColor="@color/main_title_text"
-                    android:textSize="45px" />
-
-                <TextView
-                    android:id="@+id/drug_result_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="118037910008"
-                    android:textColor="@color/main_title_text"
-                    android:textSize="45px" />
-            </LinearLayout>
-        </RelativeLayout>
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="3"
+                android:text="拿药时间："
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ellipsize="end"
-                    android:lineSpacingMultiplier="1.2"
-                    android:maxLines="3"
-                    android:text="拿药时间："
-                    android:textColor="@color/main_content_text"
-                    android:textSize="@dimen/main_text_size" />
-
-                <TextView
-                    android:id="@+id/prescript_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ellipsize="end"
-                    android:lineSpacingMultiplier="1.2"
-                    android:maxLines="1"
-                    android:text="11807910008"
-                    android:textColor="@color/main_content_text"
-                    android:textSize="@dimen/main_text_size" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/prescript_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ellipsize="end"
-                    android:lineSpacingMultiplier="1.2"
-                    android:maxLines="3"
-                    android:text="拿药地点："
-                    android:textColor="@color/main_content_text"
-                    android:textSize="@dimen/main_text_size" />
-
-                <TextView
-                    android:id="@+id/pharmacy_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:ellipsize="end"
-                    android:lineSpacingMultiplier="1.2"
-                    android:maxLines="1"
-                    android:text="张医生"
-                    android:textColor="@color/main_content_text"
-                    android:textSize="@dimen/main_text_size" />
-            </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="1"
+                android:text="11807910008"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/drug_result_detail"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:ellipsize="end"
-            android:lineSpacingMultiplier="1.2"
-            android:maxLines="3"
-            android:text="检查单详情不超过3行不超过3行"
-            android:textColor="@color/main_content_text"
-            android:textSize="@dimen/main_text_size" />
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="3"
+                android:text="拿药地点："
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+
+            <TextView
+                android:id="@+id/pharmacy_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="1"
+                android:text="张医生"
+                android:textColor="@color/main_content_text"
+                android:textSize="@dimen/main_text_size" />
+        </LinearLayout>
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/drug_result_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.2"
+        android:maxLines="3"
+        android:text="检查单详情不超过3行不超过3行"
+        android:textColor="@color/main_content_text"
+        android:textSize="@dimen/main_text_size" />
+</LinearLayout>
+

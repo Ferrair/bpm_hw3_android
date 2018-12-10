@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.qihang.bpm_hw3.R;
@@ -45,13 +46,11 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Holder> 
         holder.payment_time.setText(item.getTimeString());
         holder.payment_status.setText(item.getStatusFormatted());
         holder.payment_number.setText(item.getNumber() + "");
-        holder.root.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, PaymentActivity.class);
-                intent.putExtra("payment_id", item.getId());
-                mContext.startActivity(intent);
-            }
+        holder.root.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, PaymentActivity.class);
+            intent.putExtra("payment_id", item.getId());
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            mContext.startActivity(intent);
         });
     }
 
@@ -62,7 +61,7 @@ public class PaymentAdapter extends RecyclerView.Adapter<PaymentAdapter.Holder> 
 
     class Holder extends RecyclerView.ViewHolder {
         TextView payment_id, payment_type, payment_time, payment_number, payment_status;
-        CardView root;
+        LinearLayout root;
 
         //实现的方法
         Holder(View itemView) {

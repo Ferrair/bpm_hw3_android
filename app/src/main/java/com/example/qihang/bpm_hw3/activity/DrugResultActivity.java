@@ -31,21 +31,16 @@ public class DrugResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_result);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mID = findViewById(R.id.drug_result_id);
-        mTime = findViewById(R.id.drug_time);
-        mPharmacyName = findViewById(R.id.pharmacy_name);
-        mResultDetail = findViewById(R.id.drug_result_detail);
-        mPrescriptDetail = findViewById(R.id.prescript_detail);
+        mID = (TextView) findViewById(R.id.drug_result_id);
+        mTime = (TextView) findViewById(R.id.drug_time);
+        mPharmacyName = (TextView) findViewById(R.id.pharmacy_name);
+        mResultDetail = (TextView) findViewById(R.id.drug_result_detail);
+        mPrescriptDetail = (TextView) findViewById(R.id.prescript_detail);
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
 
         HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
         Call<ResponseBody> call = mHospitalInterface.drugResultItem(getIntent().getStringExtra("drug_result_id"));
@@ -74,14 +69,11 @@ public class DrugResultActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.report).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DrugResultActivity.this, PDFActivity.class);
-                intent.putExtra("filename", mID.getText().toString());
-                intent.putExtra("fileurl", "http://47.107.241.57:8080/file/U1c365fdb24129c/hospital/Drugresult/" + mID.getText().toString());
-                startActivity(intent);
-            }
+        findViewById(R.id.report).setOnClickListener(v -> {
+            Intent intent = new Intent(DrugResultActivity.this, PDFActivity.class);
+            intent.putExtra("filename", mID.getText().toString());
+            intent.putExtra("fileurl", "http://47.107.241.57:8080/file/U1c365fdb24129c/hospital/Drugresult/" + mID.getText().toString());
+            startActivity(intent);
         });
 
     }

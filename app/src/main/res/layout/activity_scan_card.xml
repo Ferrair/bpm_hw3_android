@@ -13,7 +13,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="10dp"
         android:background="@drawable/shape_button"
-        android:text="注册"
+        android:text="病人注册"
         tools:ignore="HardcodedText" />
 
 </LinearLayout>

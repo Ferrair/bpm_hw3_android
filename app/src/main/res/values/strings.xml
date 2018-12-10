@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">bpm_hw3</string>
+    <string name="app_name">移动医疗信息平台</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="title_activity_prescript">PrescriptActivity</string>
     <string name="title_activity_examination_list">ExaminationList</string>

@@ -20,6 +20,12 @@ public interface HospitalInterface {
     /**
      * 挂号
      */
+    @POST("Patient")
+    Call<ResponseBody> patient(@Body Map<String, Object> params);
+
+    /**
+     * 挂号
+     */
     @POST("Registration")
     Call<ResponseBody> register(@Body Map<String, Object> params);
 

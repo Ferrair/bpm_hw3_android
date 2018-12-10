@@ -43,32 +43,24 @@ public class RegistrationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration_list);
         // initStatus(R.color.colorPrimary);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
 
-        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Go to register
-                Intent intent = new Intent(RegistrationListActivity.this, RegisterActivity.class);
-                intent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
-                startActivity(intent);
-            }
+        findViewById(R.id.register).setOnClickListener(v -> {
+            // Go to register
+            Intent intent = new Intent(RegistrationListActivity.this, RegisterActivity.class);
+            intent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
+            startActivity(intent);
         });
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        findViewById(R.id.back).setOnClickListener(v -> finish());
 
     }
 
@@ -85,9 +77,11 @@ public class RegistrationListActivity extends AppCompatActivity {
                     try {
                         String json = response.body().string();
                         RegistrationList result = JsonUtil.fromJson(json, RegistrationList.class);
-                        Collections.sort(result.list);
-                        RegistrationAdapter mAdapter = new RegistrationAdapter(getApplicationContext(), result.list);
-                        mRecyclerView.setAdapter(mAdapter);
+                        if (result.list != null) {
+                            Collections.sort(result.list);
+                            RegistrationAdapter mAdapter = new RegistrationAdapter(getApplicationContext(), result.list);
+                            mRecyclerView.setAdapter(mAdapter);
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
