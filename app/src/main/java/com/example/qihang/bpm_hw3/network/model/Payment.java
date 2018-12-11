@@ -1,14 +1,15 @@
 package com.example.qihang.bpm_hw3.network.model;
 
-import android.util.Log;
-
 import com.example.qihang.bpm_hw3.utils.TimeUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by qihang on 2018/11/21.
  */
 
-public class Payment {
+public class Payment implements MapBuilder {
     public String id;
     public String status;  // unpaid, paid
     public String type; // Examination, Prescript
@@ -116,4 +117,17 @@ public class Payment {
         return TimeUtils.timestamp2String(getTimestamp());
     }
 
+    @Override
+    public Map<String, Object> build() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", this.id);
+        map.put("timestamp", this.timestamp);
+        map.put("type", this.type);
+        map.put("status", "paid");
+        map.put("number", this.number);
+        map.put("patient_id", new ForeignModel(this.patient_id.id, "Patient"));
+        map.put("outpatient_doctor_id", new ForeignModel(this.outpatient_doctor_id.id, "outpatientdoctor"));
+        map.put("examination_id", new ForeignModel(this.examination_id.id, "examination"));
+        return map;
+    }
 }

@@ -84,7 +84,7 @@ public interface HospitalInterface {
      * 缴费
      */
     @PUT("Payment/{id}")
-    Call<ResponseBody> doPay(@Path("id") String id);
+    Call<ResponseBody> doPay(@Path("id") String id, @Body Map<String, Object> params);
 
     /**
      * Examination 查找 Payment

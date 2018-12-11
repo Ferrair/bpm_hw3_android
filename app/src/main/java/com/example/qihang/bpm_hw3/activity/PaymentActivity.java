@@ -71,6 +71,9 @@ public class PaymentActivity extends AppCompatActivity {
 
         mHospitalInterface = RemoteManager.create(HospitalInterface.class);
 
+    }
+
+    private void initPaymentState() {
         /*
          * 从不同入口进来
          */
@@ -153,7 +156,7 @@ public class PaymentActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO 加载数据
+        initPaymentState();
     }
 
     private void pay() {
@@ -221,11 +224,10 @@ public class PaymentActivity extends AppCompatActivity {
     };
 
     /**
-     * TODO ERROR
      * 修改Payment的状态
      */
     private void paymentSuccess() {
-        Call<ResponseBody> call = mHospitalInterface.doPay(mPayment.getId());
+        Call<ResponseBody> call = mHospitalInterface.doPay(mPayment.getId(), mPayment.build());
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
