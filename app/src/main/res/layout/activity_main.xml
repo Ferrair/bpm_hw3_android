@@ -64,7 +64,7 @@
                         android:drawableLeft="@drawable/icon_jy"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="挂号记录"
                         android:textColor="#666666"
                         android:textSize="39px" />
@@ -83,7 +83,7 @@
                         android:drawableLeft="@drawable/icon_jy"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="药方"
                         android:textColor="#666666"
                         android:textSize="39px" />
@@ -102,7 +102,7 @@
                         android:drawableLeft="@drawable/icon_jy"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="检查单"
                         android:textColor="#666666"
                         android:textSize="39px" />
@@ -121,7 +121,7 @@
                         android:drawableLeft="@drawable/icon_ka"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="缴费记录"
                         android:textColor="#666666"
                         android:textSize="39px" />
@@ -140,7 +140,7 @@
                         android:drawableLeft="@drawable/icon_ka"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="检查结果"
                         android:textColor="#666666"
                         android:textSize="39px" />
@@ -159,7 +159,7 @@
                         android:drawableLeft="@drawable/icon_ka"
                         android:drawablePadding="28px"
                         android:drawableRight="@drawable/icon_arrow"
-                        android:padding="10dp"
+                        android:padding="12dp"
                         android:text="拿药结果"
                         android:textColor="#666666"
                         android:textSize="39px" />

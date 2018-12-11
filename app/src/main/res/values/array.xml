@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="illness">
+        <item>眼睛干涩</item>
+        <item>视力下降</item>
+        <item>耳鸣</item>
+        <item>肩部疼痛</item>
+        <item>膝关节</item>
+        <item>踝关机</item>
+        <item>手腕</item>
+        <item>咳嗽</item>
+        <item>呼吸困难</item>
+        <item>哮喘</item>
+        <item>腹泻</item>
+        <item>胃部胀气</item>
+    </string-array>
+</resources>
