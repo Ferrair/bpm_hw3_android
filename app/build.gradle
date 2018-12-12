@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 project.ext.ASSET_DIR = projectDir.toString() + '/src/main/assets'
 
-// assert file(project.ext.ASSET_DIR + "/model.lite").exists()
-// assert file(project.ext.ASSET_DIR + "/labels.txt").exists()
+ assert file(project.ext.ASSET_DIR + "/model.tflite").exists()
+ assert file(project.ext.ASSET_DIR + "/labels.txt").exists()
 
 android {
     compileSdkVersion 26

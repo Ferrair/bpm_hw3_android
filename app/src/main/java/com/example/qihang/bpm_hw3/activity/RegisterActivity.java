@@ -84,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
                     })
                     .setMultiChoiceItems(R.array.illness, null, (dialog13, which, isChecked) -> {
                         predictData[which + 3] = isChecked ? 1 : 0;
+
                     }).create();
             dialog.show();
         });
@@ -103,13 +104,14 @@ public class RegisterActivity extends AppCompatActivity implements OnDateSetList
     }
 
     private void gotoSelectDoctor() {
-        float age = (Integer.parseInt(mAge.getText().toString()) - 4) / (93 - 4);
+        float age = (Float.parseFloat(mAge.getText().toString()) - 4) / (93 - 4);
         float bmi = (Float.parseFloat(mBMI.getText().toString()) - 17) / (29 - 17);
         float gender = mGender.getText().toString().equals("男") ? 1 : 0;
 
         predictData[0] = age;
         predictData[1] = bmi;
         predictData[2] = gender;
+
         Intent intent = new Intent(this, SelectDoctorActivity.class);
         intent.putExtra("predict_data", predictData);
         intent.putExtra("register_time", TimeUtils.string2Timestamp(mRegister_time.getText().toString()));

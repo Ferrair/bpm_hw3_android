@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.qihang.bpm_hw3.R;
 import com.example.qihang.bpm_hw3.adapter.DoctorAdapter;
+import com.example.qihang.bpm_hw3.ml.Recommend;
 import com.example.qihang.bpm_hw3.network.RemoteManager;
 import com.example.qihang.bpm_hw3.network.model.ForeignModel;
 import com.example.qihang.bpm_hw3.network.model.OutpatientDoctor;
@@ -24,7 +25,6 @@ import com.example.qihang.bpm_hw3.network.model.Registration;
 import com.example.qihang.bpm_hw3.network.services.HospitalInterface;
 import com.example.qihang.bpm_hw3.utils.DividerItemDecoration;
 import com.example.qihang.bpm_hw3.utils.JsonUtil;
-import com.google.gson.annotations.SerializedName;
 import com.tylerjroach.eventsource.EventSource;
 import com.tylerjroach.eventsource.EventSourceHandler;
 import com.tylerjroach.eventsource.MessageEvent;
@@ -46,6 +46,7 @@ public class SelectDoctorActivity extends AppCompatActivity {
     String patient_id;
     String doctor_id = "1542701863438";
     EventSource eventSource;
+    Recommend classifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,6 @@ public class SelectDoctorActivity extends AppCompatActivity {
         register_time = intent.getLongExtra("register_time", 0);
         detail = intent.getStringExtra("detail");
         patient_id = intent.getStringExtra("patient_id");
-
         final TextView mFinish = (TextView) findViewById(R.id.finish);
         mFinish.setOnClickListener(v -> {
             register();
@@ -65,6 +65,14 @@ public class SelectDoctorActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.back).setOnClickListener(v -> finish());
+
+        try {
+            classifier = new Recommend(this);
+            List<OutpatientDoctor> result = classifier.predict(predictData);
+            setAdapter(this, result);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void register() {
@@ -86,7 +94,7 @@ public class SelectDoctorActivity extends AppCompatActivity {
                         Registration result = JsonUtil.fromJson(json, Registration.class);
                         subscribe(result.id);
 
-                        Log.i("RegisterActivity register", result.id);
+                        Log.i("SelectDoctorActivity register", result.id);
                         Toast.makeText(getApplicationContext(), "挂号成功", Toast.LENGTH_SHORT).show();
                         finish();
                     } catch (IOException e) {
@@ -97,7 +105,7 @@ public class SelectDoctorActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("RegisterActivity onFailure", t.toString());
+                Log.i("SelectDoctorActivity onFailure", t.toString());
             }
         });
     }
@@ -120,46 +128,18 @@ public class SelectDoctorActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    private void setAdapter(final Context context) {
+    private void setAdapter(final Context context, List<OutpatientDoctor> result) {
+        DoctorAdapter mAdapter = new DoctorAdapter(context, result);
+        mAdapter.setItemClickListener((data, position) -> {
+            this.doctor_id = data.getId();
+            // TODO update selected item UI
+        });
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-
-
-        HospitalInterface mHospitalInterface = RemoteManager.create(HospitalInterface.class);
-        Call<ResponseBody> call = mHospitalInterface.allDoctor();
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    try {
-                        String json = response.body().string();
-                        DoctorList result = JsonUtil.fromJson(json, DoctorList.class);
-                        DoctorAdapter mAdapter = new DoctorAdapter(context, result.list);
-                        mAdapter.setItemClickListener(new DoctorAdapter.ItemClickListener() {
-                            @Override
-                            public void onItemClick(OutpatientDoctor data, int position) {
-
-                            }
-                        });
-                        mRecyclerView.setAdapter(mAdapter);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.i("SelectDoctorActivity onFailure", t.toString());
-            }
-        });
-    }
-
-    protected class DoctorList {
-        @SerializedName(value = "Outpatientdoctor")
-        List<OutpatientDoctor> list;
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     public class RegistrationHandler implements EventSourceHandler {

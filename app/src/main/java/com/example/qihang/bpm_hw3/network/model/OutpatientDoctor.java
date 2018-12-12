@@ -9,6 +9,12 @@ public class OutpatientDoctor {
     public String major;
     public String id;
 
+    public OutpatientDoctor(String id, String name, String major) {
+        this.name = name;
+        this.major = major;
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
